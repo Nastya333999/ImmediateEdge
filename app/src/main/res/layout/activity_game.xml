@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.GameActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/backgroung" />
+
+    <TextView
+        android:id="@+id/txtPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingLeft="21dp"
+        android:paddingTop="8dp"
+        android:paddingRight="21dp"
+        android:paddingBottom="8dp"
+        android:text="Play"
+        android:textColor="@color/black"
+        android:textSize="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/easyFlipViewTwo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+
+    <com.wajahatkarim3.easyflipview.EasyFlipView
+        android:id="@+id/easyFlipViewOne"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:flipDuration="400"
+        app:flipEnabled="true"
+        app:flipFrom="front"
+        app:flipOnTouch="false"
+        app:flipType="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/easyFlipViewTwo"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- Back Layout Goes Here -->
+        <include
+            android:id="@+id/includesBackOne"
+            layout="@layout/flash_card_layout_back" />
+
+        <!-- Front Layout Goes Here -->
+        <include
+            android:id="@+id/includesFrontOne"
+            layout="@layout/flash_card_layout_front" />
+
+    </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+    <com.wajahatkarim3.easyflipview.EasyFlipView
+        android:id="@+id/easyFlipViewTwo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:flipDuration="400"
+        app:flipEnabled="true"
+        app:flipFrom="front"
+        app:flipOnTouch="true"
+        app:flipType="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/guideline3"
+        app:layout_constraintEnd_toStartOf="@id/easyFlipViewThree"
+        app:layout_constraintStart_toEndOf="@+id/easyFlipViewOne">
+
+        <!-- Back Layout Goes Here -->
+        <include
+            android:id="@+id/includesBackTwo"
+            layout="@layout/flash_card_layout_back" />
+
+        <!-- Front Layout Goes Here -->
+        <include
+            android:id="@+id/includesFrontTwo"
+            layout="@layout/flash_card_layout_front" />
+
+    </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+    <com.wajahatkarim3.easyflipview.EasyFlipView
+        android:id="@+id/easyFlipViewThree"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:flipDuration="400"
+        app:flipEnabled="true"
+        app:flipFrom="front"
+        app:flipOnTouch="true"
+        app:flipType="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/easyFlipViewTwo">
+
+        <!-- Back Layout Goes Here -->
+        <include
+            android:id="@+id/includesBackThree"
+            layout="@layout/flash_card_layout_back" />
+
+        <!-- Front Layout Goes Here -->
+        <include
+            android:id="@+id/includesFrontThree"
+            layout="@layout/flash_card_layout_front" />
+
+    </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+    <Button
+        android:id="@+id/btn_first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:text="Press"
+        app:layout_constraintEnd_toEndOf="@id/easyFlipViewOne"
+        app:layout_constraintStart_toStartOf="@+id/easyFlipViewOne"
+        app:layout_constraintTop_toBottomOf="@+id/easyFlipViewOne" />
+
+    <Button
+        android:id="@+id/btn_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:text="Press"
+        app:layout_constraintEnd_toEndOf="@id/easyFlipViewTwo"
+        app:layout_constraintStart_toStartOf="@+id/easyFlipViewTwo"
+        app:layout_constraintTop_toBottomOf="@+id/easyFlipViewTwo" />
+
+    <Button
+        android:id="@+id/btn_free"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:text="Press"
+        app:layout_constraintEnd_toEndOf="@id/easyFlipViewThree"
+        app:layout_constraintStart_toStartOf="@+id/easyFlipViewThree"
+        app:layout_constraintTop_toBottomOf="@+id/easyFlipViewThree" />
+
+
+    <Button
+        android:id="@+id/btn_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_second" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
