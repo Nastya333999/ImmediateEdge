@@ -8,12 +8,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.util.Log
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.app.immediateedge.base.Const
-import com.app.immediateedge.base.App
-import com.app.immediateedge.base.AppsWrapper
-import com.app.immediateedge.base.FileDataCreator
-import com.app.immediateedge.base.OneWrapper
-import com.app.immediateedge.base.NewService
+import com.app.immediateedge.base.*
 import com.app.immediateedge.presentation.GameActivity
 import com.app.immediateedge.presentation.LoadingActivity
 import com.app.immediateedge.presentation.LoadingActivity.Companion.BROADCAST_RECEIVER_ACTION
@@ -37,7 +32,6 @@ class LoadingPresenter(private val activity: LoadingActivity) {
                     Log.e("MainActivity", "BROADCAST_RECEIVER_KEY--$isNotADB")
                     if (isNotADB) {
                         initPresenter(activity)
-
                     } else {
                         val intent = Intent(context, GameActivity::class.java)
                         intent.flags =
@@ -49,7 +43,6 @@ class LoadingPresenter(private val activity: LoadingActivity) {
             }
         }
     }
-
 
     fun createBroadcastManager() {
         LocalBroadcastManager.getInstance(activity)
