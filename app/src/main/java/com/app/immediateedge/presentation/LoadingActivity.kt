@@ -12,9 +12,6 @@ import com.app.immediateedge.presenter.LoadingPresenter
 class LoadingActivity : AppCompatActivity() {
 
 
-//    private val viewModel: MainPresenter by viewModels()
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = LoadingActivityBinding.inflate(layoutInflater)

@@ -11,8 +11,8 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 
 class MainPresenter(private val app: Application) {
 
-    fun saveUrl(url: String): Observable<String> {
-        return Observable.create { subscriber ->
+    fun saveUrl(url: String) {
+        Observable.fromRunnable<Unit> {
             val dao = (app as App).dataBase.dataUrlDao()
 
             val dataUrls = dao.getAll()
@@ -23,7 +23,8 @@ class MainPresenter(private val app: Application) {
                 val updatedData = data.copy(uri = url)
                 dao.update(updatedData)
             }
-        }
+        }.subscribeOn(Schedulers.io())
+            .subscribe {}
     }
 
     companion object {

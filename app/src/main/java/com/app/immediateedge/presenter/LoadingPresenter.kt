@@ -36,16 +36,19 @@ class LoadingPresenter(private val activity: LoadingActivity) {
                     val isNotADB = bundle.getBoolean(LoadingActivity.BROADCAST_RECEIVER_KEY)
                     Log.e("MainActivity", "BROADCAST_RECEIVER_KEY--$isNotADB")
 
-                    if (isNotADB) {
-                        initPresenter(activity)
 
-                    } else {
-                        val intent = Intent(context, GameActivity::class.java)
-                        intent.flags =
-                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        activity.startActivity(intent)
-                        activity.finish()
-                    }
+                    initPresenter(activity)
+
+//                    if (isNotADB) {
+//                        initPresenter(activity)
+//
+//                    } else {
+//                        val intent = Intent(context, GameActivity::class.java)
+//                        intent.flags =
+//                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//                        activity.startActivity(intent)
+//                        activity.finish()
+//                    }
                 }
             }
         }
@@ -80,7 +83,7 @@ class LoadingPresenter(private val activity: LoadingActivity) {
             val dataUrls = (app as App).dataBase.dataUrlDao().getAll()
 
             if (dataUrls.isNotEmpty()) {
-                Log.e("Initialization", "mysteryFile exists")
+                Log.e("Initialization", "File exists")
 
                 subscriber.onNext(dataUrls.first().uri)
             } else {

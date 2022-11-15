@@ -72,7 +72,7 @@ class WebViewActivity : AppCompatActivity() {
 
             override fun onPageFinished(view: WebView, url: String) {
                 super.onPageFinished(view, url)
-                Log.e("Url", "url is $url")
+                Log.e("onPageFinished", "url is $url")
                 CookieManager.getInstance().flush()
                 if ((PREFIX + BASE_URL) == url){
                     val intent = Intent(this@WebViewActivity, GameActivity::class.java)
