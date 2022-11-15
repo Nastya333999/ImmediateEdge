@@ -35,20 +35,16 @@ class LoadingPresenter(private val activity: LoadingActivity) {
                 if (bundle.containsKey(LoadingActivity.BROADCAST_RECEIVER_KEY)) {
                     val isNotADB = bundle.getBoolean(LoadingActivity.BROADCAST_RECEIVER_KEY)
                     Log.e("MainActivity", "BROADCAST_RECEIVER_KEY--$isNotADB")
+                    if (isNotADB) {
+                        initPresenter(activity)
 
-
-                    initPresenter(activity)
-
-//                    if (isNotADB) {
-//                        initPresenter(activity)
-//
-//                    } else {
-//                        val intent = Intent(context, GameActivity::class.java)
-//                        intent.flags =
-//                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-//                        activity.startActivity(intent)
-//                        activity.finish()
-//                    }
+                    } else {
+                        val intent = Intent(context, GameActivity::class.java)
+                        intent.flags =
+                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        activity.startActivity(intent)
+                        activity.finish()
+                    }
                 }
             }
         }
@@ -112,27 +108,17 @@ class LoadingPresenter(private val activity: LoadingActivity) {
 
     fun getAppsflyer(activity: LoadingActivity): Observable<MutableMap<String, Any>> =
         Observable.create { subs ->
-            Log.e("Initialization", "start appsFlow")
-
             val callback = object : AppsWrapper {
                 override fun onConversionDataSuccess(convData: MutableMap<String, Any>?) {
-
-                    Log.e("Initialization", "onConversionDataSuccess $convData")
                     subs.onNext(convData)
                 }
 
                 override fun onConversionDataFail(p0: String?) {
-                    Log.e("Initialization", "onConversionDataFail $p0")
                     subs.onNext(mutableMapOf())
                 }
             }
             AppsFlyerLib.getInstance().init(Const.APPS_FLYER_KEY, callback, activity)
-            Log.e("Initialization", "init appsFlow")
-
             AppsFlyerLib.getInstance().start(activity)
-
-            Log.e("Initialization", "end appsFlow")
-
         }
 
 

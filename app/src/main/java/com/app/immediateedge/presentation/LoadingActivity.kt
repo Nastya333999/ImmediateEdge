@@ -1,11 +1,9 @@
 package com.app.immediateedge.presentation
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.app.immediateedge.databinding.LoadingActivityBinding
-import com.app.immediateedge.presenter.MainPresenter
 import com.app.immediateedge.presenter.LoadingPresenter
 
 
