@@ -16,9 +16,9 @@ class MainPresenter(private val app: Application) {
             if (dataUrls.isEmpty()) {
                 dao.insert(DataUrl(0, url))
             } else {
-                val data = dataUrls.first()
-                val updatedData = data.copy(uri = url)
-                dao.update(updatedData)
+//                val data = dataUrls.first()
+//                val updatedData = data.copy(uri = url)
+//                dao.update(updatedData)
             }
         }.subscribeOn(Schedulers.io())
             .subscribe {}

@@ -17,7 +17,7 @@ import com.google.android.material.snackbar.Snackbar
 class WebViewActivity : AppCompatActivity() {
     private lateinit var immediateWebView: WebView
     private lateinit var valueCallback: ValueCallback<Array<Uri?>>
-    
+
     val data = registerForActivityResult(ActivityResultContracts.GetMultipleContents()) {
         valueCallback.onReceiveValue(it.toTypedArray())
     }
@@ -77,7 +77,7 @@ class WebViewActivity : AppCompatActivity() {
                         Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                 } else {
-                    if (url.isEmpty() && !url.contains(BASE_URL)) {
+                    if (url.isNotEmpty() && !url.contains(BASE_URL)) {
                         presenter.saveUrl(url)
                         Log.e("mistake here", "$url")
                     }
